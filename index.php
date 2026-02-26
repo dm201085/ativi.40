@@ -207,5 +207,64 @@ Inicio
 ?>
 
 
+
+<!-- 11 -->
+<?php
+Algoritmo "Valor_Venda_Produto"
+Var
+   custo, percentual, venda : real
+Inicio
+   // Passo 1: Entrada de dados
+   Escreva("Digite o preço de custo do produto: R$ ")
+   Leia(custo)
+   Escreva("Digite o percentual de acréscimo (ex: 25 para 25%): ")
+   Leia(percentual)
+
+   // Passo 2: Cálculo do valor de venda
+   // O cálculo é: Custo + (Custo * Percentual / 100)
+   venda <- custo + (custo * (percentual / 100))
+
+   // Passo 3: Exibição do resultado
+   Escreval("O valor de venda do produto é: R$ ", venda)
+?>
+
+
+
+<!-- 12 -->
+<?php
+Algoritmo "Custo_Carro_Novo"
+Var
+   custo_fabrica, custo_com_imposto, custo_final : real
+Inicio
+   // Passo 1: Entrada do custo inicial
+   Escreva("Digite o custo de fábrica do veículo: R$ ")
+   Leia(custo_fabrica)
+
+   // Passo 2: Aplicar 45% de impostos sobre o custo de fábrica
+   custo_com_imposto <- custo_fabrica * 1.45
+
+   // Passo 3: Aplicar 28% do distribuidor sobre o valor já com imposto
+   custo_final <- custo_com_imposto * 1.28
+
+   // Passo 4: Exibir o resultado
+   Escreval("O custo final ao consumidor é: R$ ", custo_final)
+?>
+
+
+
+<?php
+Algoritmo "Verifica_Numero"
+Var
+   numero : real
+Inicio
+   // Passo 1: Ler o número
+   Escreva("Digite um número: ")
+   Leia(numero)
+
+   // Passo 2: Condição (Se)
+   Se (numero > 10) Entao
+      Escreva("O número é maior que 10!")
+   FimSe
+?>
 </body>
 </html>
