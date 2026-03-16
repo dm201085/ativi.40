@@ -6,36 +6,50 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="POST">
+        <label>Digite os nomes (separados por espaço):</label>
+        <input type="text" name="nomes">
+        <br>
+        <label>digite o sexo de cada pessoa (M ou F, separados por espaço):</label>
+        <input type="text" name="sexos">
+        <br>
+        <label>Digite as idades das pessoas (separados por espaço):</label>
+        <input type="text" name="idades">
+        <br>
+        <label>Digite o estado de saúde das pessoas (B de Boa e R de Ruim, separados por espaço):</label>
+        <input type="text" name="saude">
+        <br>
+        <button type="submit">Enviar dados</button>
+    </form>
+    <br>
+
 <?php
-// Definimos quantas pessoas vamos ler
-$n = (int)readline("Quantas pessoas deseja avaliar? ");
 
-$totalAptos = 0;
-$totalInaptos = 0;
-
-for ($i = 1; $i <= $n; $i++) {
-    echo "\n--- Dados da $i ª pessoa ---\n";
-    $nome  = readline("Nome: ");
-    $sexo  = strtoupper(readline("Sexo (M/F): "));
-    $idade = (int)readline("Idade: ");
-    $saude = strtoupper(readline("Saúde (Boa/Ruim): "));
-
-    // Critério: Masculino, maior ou igual a 18 anos e saúde boa
-    if ($sexo == 'M' && $idade >= 18 && $saude == 'BOA') {
-        echo "Resultado: $nome está APTO.\n";
-        $totalAptos++;
-    } else {
-        echo "Resultado: $nome está INAPTO.\n";
-        $totalInaptos++;
+if ($_POST) {
+    $nomes  = explode(" ", $_POST['nomes']);
+    $sexos  = explode(" ", $_POST['sexos']);
+    $idades = explode(" ", $_POST['idades']);
+    $saude  = explode(" ", $_POST['saude']);
+    $totalpositivo = 0;
+    $totalnegativo = 0;
+    foreach ($nomes as $indice => $nome) {
+        $nome  = trim($nome);
+        $sexo  = isset($sexos[$indice]) ? strtoupper(trim($sexos[$indice])) : '';
+        $idade = isset($idades[$indice]) ? (int)trim($idades[$indice]) : 0;
+        $statussaude = isset($saude[$indice]) ? strtoupper(trim($saude[$indice])) : '';
+        if ($sexo == 'M' && $idade >= 18 && $statussaude == 'B') {
+            echo "$nome: APTO para o serviço militar <br>";
+            $totalpositivo++;
+        } else {
+            echo "$nome: INAPTO <br>";
+            $totalnegativo++;
+        }
     }
+    echo "Aptos: $totalpositivo <br>";
+    echo "Inaptos: $totalnegativo <br>";
+    echo "Total de pessoas analisadas: " . ($totalpositivo + $totalnegativo);
 }
 
-// Exibição dos totais
-echo "\n==============================\n";
-echo "Total de pessoas aptas: $totalAptos\n";
-echo "Total de pessoas inaptas: $totalInaptos\n";
-echo "==============================\n";
 ?>
 
 </body>

@@ -6,31 +6,29 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
-        <label for="n1">Primeiro número</label>
-        <input type="text" name="n1" id="n1">
+    <form method="POST">
+        <label>Digite o valor da cotação do dólar:</label>
+        <input type="number" name="cotd" step="0.1">
+        <br>
+        <label>Digite quantos dólares possui:</label>
+        <input type="number" name="dola" step="0.1">
+        <br>
+        <button type="submit">Enviar valores</button>
+    </form>
+    <br>
 
-        <label for="n2">Segundo número</label>
-        <input type="text" name="n2" id="n2">
+    <?php
 
-        <input type="submit" value="Enviar">
-</form>
-
-<?php
-Algoritmo "Conversor_Moeda"
-Var
-   cotacao, qtd_dolar, valor_real : real
-Inicio
-   
-   Escreva("Digite a cotação do dólar hoje: ")
-   Leia(cotacao)
-   Escreva("Quantos dólares você tem (US$): ")
-   Leia(qtd_dolar)
-
-   valor_real <- qtd_dolar * cotacao
-
-   Escreval("O valor em moeda brasileira é: R$ ", valor_real)
-?>
-
+    if ($_POST){
+        $cotacao = $_POST['cotd'];
+        $dollar = $_POST['dola'];
+        $reais = (float)$dollar * (float)$cotacao;
+        echo "O valor da cotação é: " . $cotacao . "<br>";
+        echo "O valor em dólares é: " . $dollar . "<br>";
+        echo "O valor em reais é: " . $reais;
+    }
+    
+    ?>
+    
 </body>
 </html>

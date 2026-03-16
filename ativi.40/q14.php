@@ -6,19 +6,30 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        <label>Digite um valor:</label>
+        <input type="number" name="valora" step="0.1">
+        <br>
+        <label>Digite outro valor:</label>
+        <input type="number" name="valorb" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
 
-<?php
-// Definindo os valores (em um cenário real, poderiam vir de um formulário)
-$valor1 = 15;
-$valor2 = 30;
+    <?php
 
-// Comparação
-if ($valor1 > $valor2) {
-    echo "O maior valor é: " . $valor1;
-} else {
-    echo "O maior valor é: " . $valor2;
-}
-?>
-
+    if ($_POST){
+        $valora = $_POST['valora'];
+        $valorb = $_POST['valorb'];
+        if ($valora > $valorb){
+        echo "O valor $valora é maior que o valor $valorb";
+        } else{
+            echo "O valor $valorb é maior que o valor $valora";
+        }
+    }
+    
+    ?>
+    
 </body>
 </html>

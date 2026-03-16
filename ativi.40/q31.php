@@ -6,22 +6,42 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        <label>Digite um valor:</label>
+        <input type="number" name="valora">
+        <br>
+        <label>Digite outro valor:</label>
+        <input type="number" name="valorb">
+        <br>
+        <label>Digite outro valor:</label>
+        <input type="number" name="valorc">
+        <br>
+        <button type="submit">Enviar valores</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $valora = $_POST['valora'];
+        $valorb = $_POST['valorb'];
+        $valorc = $_POST['valorc'];
+        if ($valora > $valorb && $valorb > $valorc){
+        echo "A sequência é: $valora, $valorb e $valorc";
+        } elseif ($valora > $valorc && $valorc > $valorb){
+            echo "A sequência é: $valora, $valorc e $valorb";
+        } elseif ($valorb > $valora && $valora > $valorc){
+            echo "A sequência é: $valorb, $valora e $valorc";
+        } elseif ($valorb > $valorc && $valorc > $valora){
+            echo "A sequência é: $valorb, $valorc e $valora";
+        } elseif ($valorc > $valorb && $valorb > $valora){
+            echo "A sequência é: $valorc, $valorb e $valora";
+        } elseif ($valorc > $valora && $valora > $valorb){
+            echo "A sequência é: $valorc, $valora e $valorb";
+        }
+    }
     
-<?php
-// 1. Recebendo os valores (podem ser alterados para teste)
-$v1 = 45;
-$v2 = 12;
-$v3 = 30;
-
-// 2. Colocando os valores dentro de um Array (vetor)
-$valores = [$v1, $v2, $v3];
-
-// 3. Ordenando o array em ordem crescente
-sort($valores);
-
-// 4. Exibindo os valores já ordenados
-echo "Os valores em ordem crescente são: " . $valores[0] . ", " . $valores[1] . " e " . $valores[2];
-?>
-
+    ?>
+    
 </body>
 </html>

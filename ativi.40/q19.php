@@ -6,37 +6,55 @@
     <title>Document</title>
 </head>
 <body>
-    
-<?php
-// Exemplo de dados (Nome e Sexo: M para Masculino, F para Feminino)
-$pessoas = [
-    ["nome" => "Ana", "sexo" => "F"],
-    ["nome" => "Bruno", "sexo" => "M"],
-    // ... imagine aqui os 56 registros
-];
+    <form method="POST">
+        <label>Digite os nomes das pessoas (separados por espaço):</label>
+        <input type="list" name="nomes" step="0.1">
+        <br>
+        <label>Digite o sexo das pessoas (F ou M, separados por espaço):</label>
+        <input type="list" name="sexos" step="0.1">
+        <br>
+        <button type="submit">Enviar dados</button>
+    </form>
+    <br>
 
-$totalHomens = 0;
-$totalMulheres = 0;
+    <?php
 
-foreach ($pessoas as $pessoa) {
-    $nome = $pessoa['nome'];
-    $sexo = strtoupper($pessoa['sexo']); // Garante que seja maiúsculo
+    if ($_POST){
+        $texton = $_POST['nomes'];
+        $textos = $_POST['sexos'];
+        $listan= explode(" ", $texton);
+        $listas= explode(" ", $textos);
+        $cont = 0;
+        $hom = 0;
+        $mul = 0;
+        foreach ($listan as $indice => $nome) {
+            $nome = trim($nome); 
+            $sexo = isset($listas[$indice]) ? strtoupper(trim($listas[$indice])) : "";
+            if ($nome != "") {
+                $cont++;
+            if ($sexo == "M") {
+                echo "Pessoa $cont: $nome - Homem <br>";
+                $hom++;
+            } elseif ($sexo == "F") {
+                echo "Pessoa $cont: $nome - Mulher <br>";
+                $mul++;
+            } else {
+                echo "Pessoa $cont: $nome - Sexo não identificado <br>";
+            }
+            }
+            if ($cont == 56) {
+                break;
+            }
 
-    if ($sexo == "M") {
-        echo "Nome: $nome - Sexo: Homem <br>";
-        $totalHomens++;
-    } elseif ($sexo == "F") {
-        echo "Nome: $nome - Sexo: Mulher <br>";
-        $totalMulheres++;
-    } else {
-        echo "Nome: $nome - Sexo: Não informado/Outro <br>";
+        }
+
+        echo "Total de pessoas: $cont <br>";
+        echo "Total de Homens: $hom <br>";
+        echo "Total de Mulheres: $mul <br>";
+
     }
-}
 
-echo "---<br>";
-echo "Total de Homens: $totalHomens <br>";
-echo "Total de Mulheres: $totalMulheres <br>";
-?>
+    ?>
 
 </body>
 </html>

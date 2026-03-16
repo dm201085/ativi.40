@@ -6,25 +6,27 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        <label>Digite o custo de fábrica do veículo:</label>
+        <input type="number" name="cust" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
 
     <?php
-Algoritmo "Custo_Carro_Novo"
-Var
-   custo_fabrica, custo_com_imposto, custo_final : real
-Inicio
-   
-   Escreva("Digite o custo de fábrica do veículo: R$ ")
-   Leia(custo_fabrica)
 
- 
-   custo_com_imposto <- custo_fabrica * 1.45
-
- 
-   custo_final <- custo_com_imposto * 1.28
- 
-  ultado
-   Escreval("O custo final ao consumidor é: R$ ", custo_final)
-?>
-
+    if ($_POST){
+        $custo = $_POST['cust'];
+        $percenimp = 0.45;
+        $percendist = 0.28;
+        $valorimp = (float)$custo * (1 + $percenimp);
+        $valorconsu = (float)$valorimp * (1 + $percendist);
+        echo "O custo de fábrica do produto é: " . $custo . "<br>";
+        echo "O preço final do consumidor é: " . $valorconsu;
+    }
+    
+    ?>
+    
 </body>
 </html>

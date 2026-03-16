@@ -6,36 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
-        <label for="n1">Primeiro número</label>
-        <input type="text" name="n1" id="n1">
+    <form method="POST">
+        <label>Valor A:</label>
+        <input type="number" name="vala" step="0.1">
+        <br>
+        <label>Valor B:</label>
+        <input type="number" name="valb" step="0.1">
+        <br>
+        <button type="submit">Enviar valores</button>
+    </form>
+    <br>
 
-        <label for="n2">Segundo número</label>
-        <input type="text" name="n2" id="n2">
+    <?php
 
-        <input type="submit" value="Enviar">
-</form>
-
-<?php
-Algoritmo "Troca_Valores"
-Var
-   A, B, Aux : real
-Inicio
-   Escreva("Digite o valor de A: ")
-   Leia(A)
-   Escreva("Digite o valor de B: ")
-   Leia(B)
-
- 
-   Aux <- A  
-   A <- B    
-   B <- Aux  
-
-  
-   Escreval("Agora A vale: ", A)
-   Escreval("Agora B vale: ", B)
-?>
-
-
+    if ($_POST){
+        $valora = $_POST['valb'];
+        $valorb = $_POST['vala'];
+        echo "O valor de A é: " . $valora . "<br>";
+        echo "O valor de B é: " . $valorb;
+    }
+    
+    ?>
+    
 </body>
 </html>

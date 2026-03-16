@@ -6,27 +6,35 @@
     <title>Document</title>
 </head>
 <body>
-    
-<?php
-// Simulando um array com 80 números aleatórios entre 1 e 300
-$numeros = [];
-for ($i = 0; $i < 80; $i++) {
-    $numeros[] = rand(1, 300);
-}
+    <form method="POST">
+        <label>Digite os números (separados por espaço):</label>
+        <input type="list" name="lista" step="0.1">
+        <br>
+        <button type="submit">Enviar números</button>
+    </form>
+    <br>
 
-// Variável contador
-$quantidadeNoIntervalo = 0;
+    <?php
 
-// Percorrendo os 80 números
-foreach ($numeros as $n) {
-    // Verificando o intervalo entre 10 e 150 (inclusive)
-    if ($n >= 10 && $n <= 150) {
-        $quantidadeNoIntervalo++;
+    if ($_POST){
+        $num = $_POST['lista'];
+        $numeros = explode(" ", $num);
+        $cont = 0;
+        foreach ($numeros as $item) {
+            $n = trim($item); 
+            if (is_numeric($n)) {
+                if ($n >= 10 && $n <= 150) {
+                    $cont = $cont + 1;
+                }
+            }
+            if ($cont == 80) {
+                break;
+            }
+        }
+    echo "A quantidade de números no intervalo [10, 150]: " . $cont;
     }
-}
 
-echo "Total de números no intervalo [10, 150]: " . $quantidadeNoIntervalo;
-?>
+    ?>
 
 </body>
 </html>

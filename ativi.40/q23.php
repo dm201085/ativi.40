@@ -6,21 +6,26 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        <label>Digite um valor:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $valor = $_POST['valor'];
+        if ($valor > 80 || $valor < 25 || $valor == 40){
+        echo "O valor segue a regra imposta";
+        } else{
+            echo "O valor não segue a regra imposta";
+        }
+    }
     
-<?php
-// O número que será testado
-$numero = 40; 
-
-// Verificação das três condições:
-// > 80 (Maior que 80)
-// < 25 (Menor que 25)
-// == 40 (Igual a 40)
-if ($numero > 80 || $numero < 25 || $numero == 40) {
-    echo "O número $numero atende aos critérios (maior que 80, menor que 25 ou igual a 40).";
-} else {
-    echo "O número $numero não atende aos critérios.";
-}
-?>
-
+    ?>
+    
 </body>
 </html>

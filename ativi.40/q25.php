@@ -6,25 +6,35 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="POST">
+        <label>Digite um primeiro número:</label>
+        <input type="number" name="num1" step="0.1">
+        <br>
+        <label>Digite um segundo número:</label>
+        <input type="number" name="num2" step="0.1">
+        <br>
+        <button type="submit">Enviar números</button>
+</form>
+<br>
 
 <?php
-// Definindo dois números para testar
-$n1 = 15;
-$n2 = 30;
-
-if ($n1 == $n2) {
-    // Caso sejam iguais
-    echo "Os números são iguais.";
-} else {
-    // Caso sejam diferentes
-    echo "Os números são diferentes. <br>";
-
-    if ($n1 > $n2) {
-        echo "O primeiro número ($n1) é o maior.";
-    } else {
-        echo "O segundo número ($n2) é o maior.";
+if ($_POST) {
+    $n1 = $_POST['num1'];
+    $n2 = $_POST['num2'];
+    if ($n1 == $n2) {
+        echo "Os números digitados são iguais";
+    } 
+    else {
+        echo "Os números são diferentes <br>";
+        if ($n1 > $n2) {
+            echo "O primeiro número $n1 é o maior";
+        } else {
+            echo "O segundo número $n2 é o maior";
+        }
     }
 }
-?> 
+
+?>
+
 </body>
 </html>

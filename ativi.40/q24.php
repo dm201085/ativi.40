@@ -6,25 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="POST">
+        <label>Digite vários números (separados por espaço):</label>
+        <input type="text" name="numeros" step="0.1">
+        <br>
+        <button type="submit">Enviar valores</button>
+    </form>
+    <br>
+
 <?php
-// Pergunta quantos números o usuário deseja digitar
-echo "Quantos números você deseja testar? ";
-$n = trim(fgets(STDIN));
 
-for ($i = 1; $i <= $n; $i++) {
-    echo "Digite o $i º número: ";
-    $numero = trim(fgets(STDIN));
-
-    // Lógica de verificação
-    if ($numero > 0) {
-        echo "Resultado: POSITIVO\n";
-    } elseif ($numero < 0) {
-        echo "Resultado: NEGATIVO\n";
-    } else {
-        echo "Resultado: ZERO\n";
+if ($_POST) {
+    $listanum = explode(" ", $_POST['numeros']);
+    $contpositivos = 0;
+    $contnegativos = 0;
+    $contzeros = 0;
+    foreach ($listanum as $valor) {
+        $num = trim($valor);
+        if (is_numeric($num)) {
+            $num = (float)$num;
+            if ($num > 0) {
+                echo "O número $num é: Positivo <br>";
+                $contpositivos++;
+            } 
+            elseif ($num < 0) {
+                echo "O número $num é: Negativo <br>";
+                $contnegativos++;
+            } 
+            else {
+                echo "O número $num é: Zero <br>";
+                $contzeros++;
+            }
+        }
     }
+    echo "Positivos: $contpositivos <br>";
+    echo "Negativos: $contnegativos <br>";
+    echo "Zeros: $contzeros";
 }
+
 ?>
 
 </body>

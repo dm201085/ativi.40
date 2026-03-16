@@ -5,32 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <form action="" method="get">
-        <label for="n1">Primeiro número</label>
-        <input type="text" name="n1" id="n1">
+<body> 
+    <form method="POST">
+        <label>Digite o valor depositado:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
 
-        <label for="n2">Segundo número</label>
-        <input type="text" name="n2" id="n2">
+    <?php
 
-        <input type="submit" value="Enviar">
-</form>
-
-<?php
-Algoritmo "Rendimento_Poupanca"
-Var
-   valor_deposito, valor_final : real
-Inicio
-   Escreva("Digite o valor depositado: R$ ")
-   Leia(valor_deposito)
-
-   
-   valor_final <- valor_deposito * 1.007
-
-
-   Escreval("Após um mês, o valor com rendimento é: R$ ", valor_final)
-?>
-
-
+    if ($_POST){
+        $deposito = $_POST['valor'];
+        $taxa = 0.007;
+        $valor = (float)$deposito * (1 + $taxa);
+        echo "Após um mês, o rendimento foi de: " . $valor;
+    }
+    
+    ?>
+    
 </body>
 </html>
