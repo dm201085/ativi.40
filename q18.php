@@ -6,25 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    
-<?php
-// Simulando um array com 75 idades aleatórias (entre 1 e 90 anos)
-$idades = [];
-for ($i = 0; $i < 75; $i++) {
-    $ids[] = rand(1, 90);
-}
+    <form method="POST">
+        <label>Digite as idades (separados por espaço):</label>
+        <input type="list" name="idades" step="0.1">
+        <br>
+        <button type="submit">Enviar idades</button>
+    </form>
+    <br>
 
-// Percorrendo cada idade para verificar a maioridade
-foreach ($ids as $indice => $idade) {
-    $pessoaNumero = $indice + 1;
-    
-    if ($idade >= 18) {
-        echo "Pessoa $pessoaNumero: $idade anos - **MAIOR DE IDADE**<br>";
-    } else {
-        echo "Pessoa $pessoaNumero: $idade anos - **MENOR DE IDADE**<br>";
+    <?php
+
+    if ($_POST){
+        $texto = $_POST['idades'];
+        $lista= explode(" ", $texto);
+        $cont = 0;
+        foreach ($lista as $valor) {
+            $idade = trim($valor); 
+            if (is_numeric($idade)) {
+                $cont += 1;
+                if ($idade >= 18) {
+                    echo "Pessoa $cont: Idade $idade - Maior de idade <br>";
+                } else {
+                    echo "Pessoa $cont: Idade $idade - Menor de idade <br>";
+                }
+            }
+            if ($cont == 75) {
+                break;
+            }
+        }
+    echo "Foi analisado a idade de $cont pessoas";
     }
-}
-?>
+
+    ?>
 
 </body>
 </html>

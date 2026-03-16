@@ -6,23 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+   <form method="POST">
+        <label>Temperatura (em Celsius):</label>
+        <input type="number" name="cel" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $tempc = $_POST['cel'];
+        $tempf = (float)$tempc * 1.8 + 32;
+        echo "A temperatura em Fahrenheit é: " . $tempf;
+    }
     
-<?php
-Algoritmo "Conversor_Celsius_Fahrenheit"
-Var
-   C, F : real
-Inicio
-   // Passo 1: Entrada do valor em Celsius
-   Escreva("Digite a temperatura em Celsius (°C): ")
-   Leia(C)
-
-   // Passo 2: Aplicação da fórmula
-   F <- (C * 1.8) + 32
-
-   // Passo 3: Exibição do resultado
-   Escreval("A temperatura em Fahrenheit é: ", F, "°F")
-?>
-
-
+    ?>
+    
 </body>
 </html>
+    

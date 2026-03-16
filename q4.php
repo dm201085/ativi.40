@@ -6,29 +6,30 @@
     <title>Document</title>
 </head>
 <body>
+     <form action="" method="get">
+        <label for="nome">nome do vendedor</label>
+        <input type="text" name="nome" id="nome">
+
+        <label for="sala">Salario:</label>
+        <input type="number" name="sala" id="sala">
+
+        <label for="vendas">Vendas</label>
+        <input type="number" name="vendas" id="vendas">
+
+        <input type="submit" value="Enviar">
+</form>
+
 
     <?php
-Algoritimo "Calculo_Salario"
-var 
-    nome: Caractere
-    salario_fixo, total_vendas, salario_final : real
-Inicio
-   // Passo 1: Entrada de dados
-   Escreva("Nome do vendedor: ")
-   Leia(nome)
-   Escreva("Salário fixo: R$ ")
-   Leia(salario_fixo)
-   Escreva("Total de vendas no mês: R$ ")
-   Leia(total_vendas)
 
-   // Passo 2: O cálculo (15% é o mesmo que 0.15)
-   salario_final <- salario_fixo + (total_vendas * 0.15)
+$salario = $_GET["sala"];
+$vendas = $_GET["vendas"];
+$nome = $_GET["nome"];
 
-   // Passo 3: Saída de dados
-   Escreval("--- Resultado ---")
-   Escreval("Vendedor: ", nome)
-   Escreval("Salário Fixo: R$ ", salario_fixo)
-   Escreval("Salário Final (com comissão): R$ ", salario_final)
+$resultado = $vendas * 1.5;
+$resultado += $salario;
+
+echo "O vendedor de nome $nome recebe um salario de $resultado";
 ?>
 
 </body>

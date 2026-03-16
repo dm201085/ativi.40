@@ -6,45 +6,54 @@
     <title>Document</title>
 </head>
 <body>
-    
-<?php
-// Entrada de dados (Exemplos)
-$A = 10.5;
-$B = 0;
-$C = '/'; // O operador desejado (+, -, *, /)
+      <form method="POST">
+        <label>Número A:</label>
+        <input type="number" name="numA" step="0.01">
+        <br>
+        <label>Número B:</label>
+        <input type="number" name="numB" step="0.01">
+        <br>
+        <label>Operação:</label>
+        <select name="operacao">
+            <option value="+">Soma (+)</option>
+            <option value="-">Subtração (-)</option>
+            <option value="*">Multiplicação (*)</option>
+            <option value="/">Divisão (/)</option>
+        </select>
+        <br>
+        <button type="submit">Calcular</button>
+    </form>
 
-switch ($C) {
-    case '+':
-        $resultado = $A + $B;
-        echo "Resultado: $resultado";
-        break;
+    <?php
 
-    case '-':
-        $resultado = $A - $B;
-        echo "Resultado: $resultado";
-        break;
-
-    case '*':
-        $resultado = $A * $B;
-        echo "Resultado: $resultado";
-        break;
-
-    case '/':
-        // Tratamento de erro de divisão por zero
-        if ($B == 0) {
-            echo "Erro: Divisão por zero não é permitida.";
-        } else {
-            $resultado = $A / $B;
-            echo "Resultado: $resultado";
+    if ($_POST) {
+        $A = (float)$_POST['numA'];
+        $B = (float)$_POST['numB'];
+        $C = $_POST['operacao'];
+        switch ($C) {
+            case '+':
+                echo "$A + $B = " . ($A + $B);
+                break;
+            case '-':
+                echo "$A - $B = " . ($A - $B);
+                break;
+            case '*':
+                echo "$A * $B = " . ($A * $B);
+                break;
+            case '/':
+                if ($B == 0) {
+                    echo "Não é possível dividir por zero!";
+                } else {
+                    echo "$A / $B = " . ($A / $B);
+                }
+                break;
+            default:
+                echo "Operador não definido.";
+                break;
         }
-        break;
+    }
 
-    default:
-        // Caso o caractere C não seja um dos operadores acima
-        echo "Operador não definido.";
-        break;
-}
-?>
+    ?>
 
 </body>
 </html>

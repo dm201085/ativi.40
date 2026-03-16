@@ -6,21 +6,26 @@
     <title>Document</title>
 </head>
 <body>
+   <form method="POST">
+        <label>Digite um valor:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $valor = $_POST['valor'];
+        if ($valor > 10){
+        echo "O valor é maior que 10";
+        } else{
+            echo "O valor é menor que 10";
+        }
+    }
     
-<?php
-Algoritmo "Verifica_Numero"
-Var
-   numero : real
-Inicio
-   // Passo 1: Ler o número
-   Escreva("Digite um número: ")
-   Leia(numero)
-
-   // Passo 2: Condição (Se)
-   Se (numero > 10) Entao
-      Escreva("O número é maior que 10!")
-   FimSe
-?>
-
+    ?>
+    
 </body>
 </html>

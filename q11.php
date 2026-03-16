@@ -6,25 +6,27 @@
     <title>Document</title>
 </head>
 <body>
+   <form method="POST">
+        <label>Digite o preço de custo:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <label>Digite o percentual de acréscimo:</label>
+        <input type="number" name="perc" step="0.1">
+        <br>
+        <button type="submit">Enviar informações</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $preco = $_POST['valor'];
+        $percen = $_POST['perc'];
+        $valor = (float)$preco * (1 + ($percen / 100));
+        echo "O valor de custo do produto é: " . $valor;
+    }
     
-<?php
-Algoritmo "Valor_Venda_Produto"
-Var
-   custo, percentual, venda : real
-Inicio
-   // Passo 1: Entrada de dados
-   Escreva("Digite o preço de custo do produto: R$ ")
-   Leia(custo)
-   Escreva("Digite o percentual de acréscimo (ex: 25 para 25%): ")
-   Leia(percentual)
-
-   // Passo 2: Cálculo do valor de venda
-   // O cálculo é: Custo + (Custo * Percentual / 100)
-   venda <- custo + (custo * (percentual / 100))
-
-   // Passo 3: Exibição do resultado
-   Escreval("O valor de venda do produto é: R$ ", venda)
-?>
-
+    ?>
+    
 </body>
 </html>

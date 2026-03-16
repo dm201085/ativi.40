@@ -6,24 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+   <form method="POST">
+        <label>Digite o valor depositado:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $deposito = $_POST['valor'];
+        $taxa = 0.007;
+        $valor = (float)$deposito * (1 + $taxa);
+        echo "Após um mês, o rendimento foi de: " . $valor;
+    }
     
-<?php
-Algoritmo "Rendimento_Poupanca"
-Var
-   valor_deposito, valor_final : real
-Inicio
-   // Passo 1: Entrada de dados
-   Escreva("Digite o valor depositado: R$ ")
-   Leia(valor_deposito)
-
-   // Passo 2: Cálculo do rendimento (0,70% é o mesmo que 0,007)
-   // Valor Final = Valor Inicial + (Valor Inicial * 0.007)
-   valor_final <- valor_deposito * 1.007
-
-   // Passo 3: Exibição do resultado
-   Escreval("Após um mês, o valor com rendimento é: R$ ", valor_final)
-?>
-
-
+    ?>
+    
 </body>
 </html>

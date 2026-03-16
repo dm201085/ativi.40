@@ -6,22 +6,23 @@
     <title>Document</title>
 </head>
 <body>
+   <form method="POST">
+        <label>Digite o valor do produto:</label>
+        <input type="number" name="valor" step="0.1">
+        <br>
+        <button type="submit">Enviar valor</button>
+    </form>
+    <br>
+
+    <?php
+
+    if ($_POST){
+        $produto = $_POST['valor'];
+        $valor = (float)$produto / 5;
+        echo "O produto pode ser pago em 5 prestações (sem juros) de: " . $valor;
+    }
     
-<?php
-Algoritmo "Loja_Mamao_Com_Acucar"
-Var
-   valor_compra, valor_prestacao : real
-Inicio
-   // Passo 1: Entrada do valor total
-   Escreva("Digite o valor total da compra: R$ ")
-   Leia(valor_compra)
-
-   // Passo 2: Cálculo da prestação (divisão simples por 5)
-   valor_prestacao <- valor_compra / 5
-
-   // Passo 3: Exibição do resultado
-   Escreval("O valor de cada prestação (em 5x sem juros) é: R$ ", valor_prestacao)
-?>
-
+    ?>
+    
 </body>
 </html>

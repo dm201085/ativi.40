@@ -6,27 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-   
-<?php
-Algoritmo "Troca_Valores"
-Var
-   A, B, Aux : real
-Inicio
-   // Passo 1: Entrada de dados
-   Escreva("Digite o valor de A: ")
-   Leia(A)
-   Escreva("Digite o valor de B: ")
-   Leia(B)
+    <form method="POST">
+        <label>Valor A:</label>
+        <input type="number" name="vala" step="0.1">
+        <br>
+        <label>Valor B:</label>
+        <input type="number" name="valb" step="0.1">
+        <br>
+        <button type="submit">Enviar valores</button>
+    </form>
+    <br>
 
-   // Passo 2: A "Dança das Cadeiras"
-   Aux <- A  // O Auxiliar guarda o valor de A
-   A <- B    // A recebe o valor de B (o valor antigo de A sumiria aqui se não estivesse no Aux)
-   B <- Aux  // B recebe o valor que estava guardado no Auxiliar
+    <?php
 
-   // Passo 3: Resultado
-   Escreval("Agora A vale: ", A)
-   Escreval("Agora B vale: ", B)
-?>
+    if ($_POST){
+        $valora = $_POST['valb'];
+        $valorb = $_POST['vala'];
+        echo "O valor de A é: " . $valora . "<br>";
+        echo "O valor de B é: " . $valorb;
+    }
+    
+    ?>
+    
+</body>
+</html>
 
 
 </body>

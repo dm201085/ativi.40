@@ -6,30 +6,30 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="" method="get">
+        <label for="nome">nome</label>
+        <input type="text" name="nota" id="nota">
+
+        <label for="n1">nota 1</label>
+        <input type="number" name="n1" id="n1">
+        <label for="n2">nota 2</label>
+        <input type="number" name="n2" id="n2">
+        <label for="n3">nota 3</label>
+        <input type="number" name="n3" id="n3">
+
+        <input type="submit" value="Enviar">
+</form>
     
 <?php
-Algoritimo "Media_aluno"
-var
-    nome: Caractere
-    n1, n2, n3, media : real
-Inicio
-    // Passo 1: Entrada de dados
-    Escreva("nome do aluno: ")
-    leia(nome)
-    Escreva("digite a primeira nota: ")
-    Leia(n1)
-    Escreva("Digite a sengunda nota: ")
-    Leia(n2)
-    Escreva("Digite a terceira nota: ")
-    Leia(n3)
+$nome = $_GET["nome"];
+$n1 = $_GET["n1"];
+$n2 = $_GET["n2"];
+$n3 = $_GET["n3"];
 
-    // Passo 2: Cálculo da média aritmética
-   media <- (n1 + n2 + n3) / 3
+$media = $n1 + $n2 + $n3 / 3;
 
-   // Passo 3: Saída de dados
-    Ecreval("---Boletim---")
-    Escreval("Aluno: ", nome )  
-    Escreval("Média Final: ", media)
+echo "O aluno de nome $nome tem média de $media";
+
 ?>
 
 

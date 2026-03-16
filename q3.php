@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+    <form action="" method="get">
+        <label for="n1">Primeiro número</label>
+        <input type="text" name="n1" id="n1">
+
+        <label for="n2">Segundo número</label>
+        <input type="text" name="n2" id="n2">
+
+        <input type="submit" value="Enviar">
+</form>
 
 <?php 
 $distancia = $_GET['n1'] ?? 0;
